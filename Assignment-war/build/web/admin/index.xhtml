@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Banking Users</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <h:outputStylesheet name="css/style.css" />
+    </h:head>
+    <center><h2><h:outputText value="User Records"/></h2></center>
+    <h:body>
+            <div class="col-sm-12">
+                <h:dataTable id="userTable" class="table table-hover"  headerClass="success" value="#{userManagedBean.userList}" var="uList"> 
+                    <h:column>
+                        <f:facet name="header">User ID</f:facet> 
+                        <h:outputText value="#{uList.id_number}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">User Name</f:facet> 
+                        <h:outputText value="#{uList.firstName}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">User Type</f:facet> 
+                        <h:outputText value="#{uList.userType}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Details</f:facet>  
+                        <h:form>
+                            <h:commandButton class="btn btn-default"  value="View Full Details" actionListener="#{userManagedBean.viewUserDetails()}">
+                                <f:param name="userID" value="#{uList.id_number}" />
+                            </h:commandButton>
+                        </h:form>
+                        </h:column>
+                    <h:column>
+                        <f:facet name="header">Update</f:facet>
+                        <h:form>
+                            <h:commandButton class="btn btn-default"  value="Update" actionListener="#{userManagedBean.updateUser()}">
+                                <f:param name="updateId" value="#{uList.id_number}" />
+                            </h:commandButton>
+                        </h:form>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Delete</f:facet>
+                        <h:form>
+                            <h:commandButton class="btn btn-default"  value="Delete" actionListener="#{userManagedBean.deleteUser()}">
+                                <f:param name="deleteId" value="#{uList.id_number}" />
+                            </h:commandButton>
+                        </h:form>
+                    </h:column>
+                        
+                        
+
+                    
+                </h:dataTable>
+                <center>
+                    <h:form>
+                        <h:commandButton class="btn btn-default" value="Create New User" action="createUser.xhtml">
+                        
+                    </h:commandButton>
+                    </h:form>
+                    
+                </center>
+                
+                
+            </div>
+
+        <div class="container">
+                <p><h:link value="Search Users" outcome="searchUsers"/> </p>
+        </div>
+        <div class="container">
+                <p><h:link value="Consume Web Service" outcome="consumeService"/> </p>
+        </div>
+    </h:body>
+</html>

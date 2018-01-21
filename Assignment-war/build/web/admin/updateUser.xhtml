@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Update User</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <h1>Update User </h1>
+                <br/>
+                <br/>
+                <table class ="table table-inverse">
+                    
+                    <tr>
+                        <td>
+                            First Name:
+                        </td>
+                        <td>
+                            <h:inputText class="form-control" value="#{userManagedBean.bankUser.firstName}" label="firstNameLabel"
+                                         required="true" requiredMessage="First name is required"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Name: 
+                        </td>
+                        <td>
+                            <h:inputText class="form-control" value="#{userManagedBean.bankUser.lastName}" label="lastNameLabel"
+                                         required="true" requiredMessage="Last name is required"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email:
+                        </td>
+                        <td>
+                            <h:inputText class="form-control" value="#{userManagedBean.bankUser.email}" label="emailLabel"
+                                         required="true" requiredMessage="Email is required" validatorMessage="Invalid email format ">
+                                <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+                            </h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Password
+                        </td>
+                        <td>
+                            <h:inputSecret class="form-control" id="password" label="passwordLabel" required="true"
+                                           value="#{userManagedBean.bankUser.password}" requiredMessage="Password required" ></h:inputSecret>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            User Type:
+                        </td>
+                        <td>
+                            <h:selectOneMenu id="selectType" label="typeLabel" value="#{userManagedBean.bankUser.userType}" required="true" 
+                                             requiredMessage="You must select one type">
+                                <f:selectItem itemLabel="Public User" itemValue="public"></f:selectItem>
+                                <f:selectItem itemLabel="Bank Official" itemValue="bankOfficial"></f:selectItem>
+                            </h:selectOneMenu>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Street Number:
+                        </td>
+                        <td>
+                            <h:inputText class="form-control" id="streetNum" label="streetnumberLabel" 
+                                         value="#{userManagedBean.userAddress.streetNumber}"></h:inputText>
+                        </td>
+                        <td>
+                            Street Address:
+                        </td>
+                        <td>
+                            <h:inputText class="form-control" id="streetAddress" label="streetAddressLabel" 
+                                         value="#{userManagedBean.userAddress.streetAddress}"></h:inputText>
+                        </td>
+                        <td>
+                            PostCode:
+                        </td>
+                        <td>
+                            <h:inputText id="postCode" label="postCodeLabel" class="form-control"
+                                         value="#{userManagedBean.userAddress.postcode}"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Suburb:
+                        </td>
+                        <td>
+                            <h:inputText id="suburb" label="suburbLabel" class="form-control"
+                                         value="#{userManagedBean.userAddress.suburb}"></h:inputText>
+                        </td>
+                        <td>
+                            State:
+                        </td>
+                        <td>
+                            <h:selectOneMenu id="selectSate" label="stateLabel" value="#{userManagedBean.userAddress.state}" required="true" 
+                                             requiredMessage="You must select one state">
+                                <f:selectItem itemLabel="VIC" itemValue="VIC"></f:selectItem>
+                                <f:selectItem itemLabel="NSW" itemValue="NSW"></f:selectItem>
+                                <f:selectItem itemLabel="Queensland" itemValue="Queensland"></f:selectItem>
+                                <f:selectItem itemLabel="WA" itemValue="WA"></f:selectItem>
+                            </h:selectOneMenu>
+                        </td>        
+                    </tr>
+
+                </table>
+            </div>
+            <br/>
+            <br/>
+
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <h:commandButton id="editUserBtn" action="#{userManagedBean.mergeUser()}" value="Save">
+                    </h:commandButton>
+                </div>
+
+            </div>
+            <br/>
+            <br/>
+
+            <div class="container">
+                <p><h:link value="Return to User Page" outcome="index"/> </p>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <h:outputLabel id="statusLabel" value="#{userManagedBean.status}" style ="color:green">
+                    </h:outputLabel>
+                </div>
+            </div>
+
+
+
+        </h:form>
+
+    </h:body>
+</html>

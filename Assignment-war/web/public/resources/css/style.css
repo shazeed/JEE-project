@@ -1,0 +1,16 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 28, 2016, 7:27:32 AM
+    Author     : Shazeed
+*/
+
+
+* {margin: 0; padding: 0;}
+#container {height: 100%; width:100%; font-size: 0;}
+#col1, #col2, #col3 {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
+#col1 {width: 20%; margin:20px; padding:20px;}
+#col2 {width: 70%; margin:20px; padding:20px;}

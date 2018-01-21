@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Search Users</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <h:outputStylesheet name="css/style.css" />
+    </h:head>
+    <center><h2><h:outputText value="Search Users"/></h2></center>
+    <body>
+        <div id="col2">
+            <h4>User Details</h4>
+            <br></br>
+            <h:form>
+                <table class="table  table-inverse">
+                    <tr>
+                        <td>User ID</td>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>User Type</td>
+                        <td>Email</td>
+                        <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <h:inputText class="form-control" id="UserIDsearch" value="#{userManagedBean.userId}">
+
+                            </h:inputText>
+                        </td>
+
+
+                        <td>
+                            <h:inputText class="form-control" id="UserFNameSearch" value="#{userManagedBean.firstName}"  >
+
+                            </h:inputText>
+                        </td>
+
+
+                        <td>
+                            <h:inputText class="form-control" id="UserLNameSearch" value="#{userManagedBean.lastName}" >
+
+                            </h:inputText>
+                        </td>
+
+                        <td>
+                            <h:selectOneMenu id="UserTypeSearch" label="typeLabel" value="#{userManagedBean.userType}" required="true" 
+                                             requiredMessage="You must select one type">
+                                <f:selectItem itemLabel="NA" itemValue=""></f:selectItem>
+                                <f:selectItem itemLabel="Public User" itemValue="public"></f:selectItem>
+                                <f:selectItem itemLabel="Bank Official" itemValue="admin"></f:selectItem>
+                            </h:selectOneMenu>
+                        </td>
+                        <td>
+                            <h:inputText class="form-control" id="UserEmailSearch" value="#{userManagedBean.email}" >
+
+                            </h:inputText>
+                        </td>
+                        
+                        <td>
+                            <h:commandButton class="btn btn-default"  type="submit" id="userSearch"  value="Search User" onclick="#{userManagedBean.searchUser()}" >
+                                
+                            </h:commandButton>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </h:form>
+
+            <h:dataTable id="tableOutput" value="#{userManagedBean.userList}" var="user"
+                         rendered="#{not empty userManagedBean.userList}"
+                         styleClass="order-table table"
+                         headerClass="order-table-header"
+                         rowClasses="order-table-odd-row,order-table-even-row">
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">USER ID</f:facet>
+                    
+                    #{user.id_number}
+                    <!-- row record -->
+                    <h:form>
+                       
+                    </h:form>
+
+
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">FIRST NAME</f:facet>
+                    <!-- row record -->
+                    #{user.firstName}
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">LAST NAME</f:facet>
+                    <!-- row record -->
+                    #{user.lastName}
+                </h:column>
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">EMAIL</f:facet>
+                    <!-- row record -->
+                    #{user.email}
+                </h:column>
+                
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">USER TYPE</f:facet>
+                    <!-- row record -->
+                    #{user.userType}
+                </h:column>
+
+            </h:dataTable>
+
+        </div>
+        
+        <div class="container">
+                <p><h:link value="Return to Main Page" outcome="index"/> </p>
+        </div>
+    </body>
+</html>

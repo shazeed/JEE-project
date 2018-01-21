@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Transaction Details</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+        
+        <h:form>
+            <div class="container">
+                <h1>Banking Transaction Details </h1>
+                <br/>
+                <br/>
+            <table class ="table table-inverse">
+                <tr>
+                    <td>
+                        Transaction ID :
+                    </td>
+                    <td>
+                        <h:outputText value ="#{searchManagedBean.transaction.transactionNum}" ></h:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Transaction Name:
+                    </td>
+                    <td>
+                        <h:outputText value ="#{searchManagedBean.transaction.transactionName}" ></h:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Transaction Type: 
+                    </td>
+                    <td>
+                        <h:outputText value ="#{searchManagedBean.transaction.transactionType.typeName}" ></h:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Transaction Description:
+                    </td>
+                    <td>
+                        <h:outputText value ="#{searchManagedBean.transaction.transactionDesc}" ></h:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        User id:
+                    </td>
+                    <td>
+                        <h:outputText value ="#{searchManagedBean.transaction.transactionUser.id_number}" ></h:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        User Name:
+                    </td>
+                    <td>
+                        <h:outputText value ="#{searchManagedBean.transaction.transactionUser.firstName}" ></h:outputText>
+                    </td>
+                </tr>
+            </table>
+                </div>
+            <br/>
+            <br/>
+            <div class="container">
+                <p><h:link value="Return to HomePage" outcome="searchTransactions"/> </p>
+            </div>
+            
+        </h:form>
+        
+
+    </h:body>
+</html>
